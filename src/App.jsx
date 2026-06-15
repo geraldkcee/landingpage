@@ -1,7 +1,7 @@
-import SalesPage from "./components/Salespage.jsx";
+import RealEstateMVP from "./components/Salespage.jsx";
 
 function App() {
-  return <SalesPage />;
+  return <RealEstateMVP />;
 }
 
 export default App;

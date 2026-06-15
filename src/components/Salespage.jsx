@@ -19,7 +19,7 @@ const SalesPage = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setFormStatus("Sending message...");
+    setFormStatus("Sending your inquiry...");
 
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -41,7 +41,7 @@ const SalesPage = () => {
 
     try {
       await emailjs.sendForm(serviceId, templateId, formRef.current);
-      setFormStatus("Message sent! I’ll reply soon.");
+      setFormStatus("Inquiry sent! We’ll contact you shortly.");
       e.target.reset();
     } catch (err) {
       console.error("EmailJS error:", err);
@@ -53,371 +53,369 @@ const SalesPage = () => {
     }
   };
 
-  const services = [
+  const featuredHomes = [
     {
-      title: "React Landing Pages",
-      desc: "High-performance, responsive sites designed to convert visitors into leads.",
+      name: "Parkside Villa",
+      location: "Greenwood Estate, Austin TX",
+      price: "$1,250,000",
+      details: "5 bed · 4 bath · 3,450 sq ft",
+      highlight: "Lake-facing retreat with modern open-plan design.",
     },
     {
-      title: "Sales Funnels",
-      desc: "Automated customer journeys with strong messaging, fast loading, and data-driven design.",
+      name: "Cityview Penthouse",
+      location: "Downtown Miami, FL",
+      price: "$2,050,000",
+      details: "4 bed · 3 bath · 2,100 sq ft",
+      highlight: "Skyline views, private terrace, luxury finishes.",
     },
     {
-      title: "Custom Web Apps",
-      desc: "Scalable apps built to streamline operations, generate more revenue, and delight users.",
+      name: "Modern Farmhouse",
+      location: "Willow Creek, Nashville TN",
+      price: "$870,000",
+      details: "4 bed · 3 bath · 2,800 sq ft",
+      highlight: "Bright interiors, acreage, and future rental potential.",
     },
   ];
 
-  const benefits = [
+  const processSteps = [
     {
-      title: "Conversion-first design",
-      desc: "Every page is optimized to drive action, reduce friction, and increase sales.",
+      title: "Discover your goals",
+      description:
+        "We listen to your vision, budget, and must-haves before recommending homes.",
     },
     {
-      title: "Fast launch",
-      desc: "Get a polished website quickly with a smooth development process and clear milestones.",
+      title: "Tour the best options",
+      description:
+        "Schedule curated showings for properties that match your lifestyle.",
     },
     {
-      title: "Reliable support",
-      desc: "Ongoing updates, performance monitoring, and optimization after launch.",
+      title: "Negotiate with confidence",
+      description:
+        "Our team supports every offer, inspection, and closing detail.",
+    },
+    {
+      title: "Move in smoothly",
+      description:
+        "We stay in touch until your keys are in hand and you feel at home.",
+    },
+  ];
+
+  const agents = [
+    {
+      name: "Ava Richardson",
+      role: "Lead Buyer Agent",
+      specialties: "Luxury homes, investment properties, relocation support",
+    },
+    {
+      name: "Noah Patel",
+      role: "Listing Specialist",
+      specialties: "Market positioning, staging strategy, fast sales",
+    },
+    {
+      name: "Sophia Kim",
+      role: "Neighborhood Expert",
+      specialties: "School districts, local amenities, community insights",
     },
   ];
 
   const testimonials = [
     {
-      name: "Dominic",
-      role: "Founder, ABEC",
+      name: "Jordan M.",
+      role: "First-time buyer",
       quote:
-        "The new site doubled our lead flow in 30 days and finally captured our brand consistently.",
+        "EstateVista helped us find our perfect home in just two weeks. The process felt seamless from day one.",
     },
     {
-      name: "Mary",
-      role: "Marketing Director, brother's food",
+      name: "Camila R.",
+      role: "Seller",
       quote:
-        "Fast communication, excellent execution, and a landing page that converts better than our old one.",
+        "Our house sold above asking price, and the agent managed every detail with care.",
     },
     {
-      name: "Felix",
-      role: "CEO, Safer Road int'l",
+      name: "Ethan S.",
+      role: "Investor",
       quote:
-        "This project exceeded expectations — smooth UI, clear messaging, and a strong sales funnel.",
-    },
-  ];
-
-  const plans = [
-    {
-      title: "Launch",
-      price: "$500",
-      features: [
-        "Landing page design",
-        "Lead capture form",
-        "Responsive layout",
-      ],
-      accent: false,
-    },
-    {
-      title: "Growth",
-      price: "$800",
-      features: ["Custom funnel", "Analytics setup"],
-      accent: true,
-    },
-    {
-      title: "Scale",
-      price: "$1300",
-      features: [
-        "Web app features",
-        "Marketing automation",
-        "Priority support",
-      ],
-      accent: false,
+        "We closed on a high-return rental property quickly thanks to their market expertise.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
-      <nav className="fixed w-full bg-white shadow-md z-50">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+      <nav className="fixed w-full bg-white/95 backdrop-blur shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="text-2xl font-bold text-blue-600">
-              KelechiHQ services
+          <div className="flex items-center justify-between h-16">
+            <div className="space-y-1">
+              <p className="text-2xl font-extrabold text-slate-900">
+                EstateVista
+              </p>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+                Real estate made simple
+              </p>
             </div>
 
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-gray-700 hover:text-blue-600">
-                Services
+            <div className="hidden md:flex items-center gap-8 text-sm text-slate-700">
+              <a href="#listings" className="hover:text-slate-900 transition">
+                Listings
               </a>
-              <a href="#why" className="text-gray-700 hover:text-blue-600">
-                Why Work With Us
+              <a href="#process" className="hover:text-slate-900 transition">
+                Process
               </a>
-              <a
-                href="#testimonials"
-                className="text-gray-700 hover:text-blue-600"
-              >
-                Testimonials
+              <a href="#agents" className="hover:text-slate-900 transition">
+                Agents
               </a>
               <a
                 href="#contact"
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                className="rounded-full bg-slate-900 text-white px-5 py-2 hover:bg-slate-800 transition"
               >
-                Hire Me
+                Get Started
               </a>
             </div>
 
-            <div className="md:hidden">
-              <button
-                onClick={toggleMenu}
-                className="text-gray-700 focus:outline-none"
-                aria-label="Open mobile menu"
-              >
-                {isMenuOpen ? "✕" : "☰"}
-              </button>
-            </div>
+            <button
+              onClick={toggleMenu}
+              className="md:hidden text-slate-700 focus:outline-none"
+              aria-label="Open mobile menu"
+            >
+              {isMenuOpen ? "✕" : "☰"}
+            </button>
           </div>
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <a href="#services" className="block px-4 py-3 hover:bg-gray-100">
-              Services
-            </a>
-            <a href="#why" className="block px-4 py-3 hover:bg-gray-100">
-              Why Work With Us
+          <div className="md:hidden bg-white border-t border-slate-200">
+            <a
+              href="#listings"
+              className="block px-4 py-3 text-slate-700 hover:bg-slate-50"
+            >
+              Listings
             </a>
             <a
-              href="#testimonials"
-              className="block px-4 py-3 hover:bg-gray-100"
+              href="#process"
+              className="block px-4 py-3 text-slate-700 hover:bg-slate-50"
             >
-              Testimonials
+              Process
+            </a>
+            <a
+              href="#agents"
+              className="block px-4 py-3 text-slate-700 hover:bg-slate-50"
+            >
+              Agents
             </a>
             <a
               href="#contact"
-              className="block px-4 py-3 text-blue-600 font-semibold hover:bg-gray-100"
+              className="block px-4 py-3 text-slate-900 font-semibold hover:bg-slate-50"
             >
-              Hire Me
+              Get Started
             </a>
           </div>
         )}
       </nav>
 
-      <header className="pt-32 pb-16 bg-linear-to-br from-blue-50 via-white to-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-blue-600 font-semibold mb-4">
-            Convert more visitors with a polished web experience
-          </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-            Build a revenue-driving website that captures leads and closes
-            sales.
-          </h1>
-          <p className="mx-auto max-w-3xl text-lg sm:text-xl text-gray-600 mb-10">
-            High-converting React landing pages, funnels, and web apps designed
-            for service brands, agencies, and fast-growth businesses.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-full text-base font-semibold shadow-lg shadow-blue-200 hover:bg-blue-700 transition"
-            >
-              Book a Free Strategy Call
-            </a>
-            <a
-              href="#services"
-              className="inline-flex items-center justify-center border border-blue-600 text-blue-600 bg-white px-8 py-4 rounded-full text-base font-semibold hover:bg-blue-50 transition"
-            >
-              See examples
-            </a>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            <div className="rounded-3xl bg-white p-6 shadow-sm border border-gray-200">
-              <p className="text-3xl font-bold text-blue-600">+60%</p>
-              <p className="mt-3 text-sm text-gray-600">
-                Average conversion lift for clients.
+      <header className="relative overflow-hidden bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_35%)] pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-sky-600 font-semibold mb-4">
+                Find your next home faster
               </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-950 leading-tight mb-6">
+                The easiest way to buy, sell, or invest in real estate.
+              </h1>
+              <p className="max-w-2xl text-lg text-slate-600 mb-10">
+                Discover curated homes, expert guidance, and fast closing
+                support from a real estate team focused on your goals.
+              </p>
+              <div className="flex flex-col gap-4 sm:flex-row items-start sm:items-center">
+                <a
+                  href="#listings"
+                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-slate-200 hover:bg-slate-800 transition"
+                >
+                  Explore Listings
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-900 hover:bg-slate-100 transition"
+                >
+                  Schedule a Consultation
+                </a>
+              </div>
             </div>
-            <div className="rounded-3xl bg-white p-6 shadow-sm border border-gray-200">
-              <p className="text-3xl font-bold text-blue-600">24h</p>
-              <p className="mt-3 text-sm text-gray-600">
-                Fast response to every project inquiry.
-              </p>
-            </div>
-            <div className="rounded-3xl bg-white p-6 shadow-sm border border-gray-200">
-              <p className="text-3xl font-bold text-blue-600">100%</p>
-              <p className="mt-3 text-sm text-gray-600">
-                SEO-friendly and mobile-first builds.
-              </p>
+
+            <div className="rounded-4xl bg-white p-8 shadow-2xl shadow-slate-200">
+              <div className="space-y-6">
+                <div className="rounded-3xl overflow-hidden bg-slate-950 text-white p-8">
+                  <p className="text-sm uppercase tracking-[0.35em] text-slate-300">
+                    Featured neighborhood
+                  </p>
+                  <h2 className="mt-4 text-3xl font-bold">Maple Ridge</h2>
+                  <p className="mt-3 text-slate-300 leading-7">
+                    Spacious family homes, top schools, and easy commute access.
+                  </p>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-3xl bg-slate-100 p-5">
+                    <p className="text-xs uppercase tracking-[0.35em] text-slate-500 mb-3">
+                      Closing speed
+                    </p>
+                    <p className="text-3xl font-semibold text-slate-900">
+                      30 days
+                    </p>
+                  </div>
+                  <div className="rounded-3xl bg-slate-100 p-5">
+                    <p className="text-xs uppercase tracking-[0.35em] text-slate-500 mb-3">
+                      Client satisfaction
+                    </p>
+                    <p className="text-3xl font-semibold text-slate-900">98%</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      <section id="why" className="py-20 px-4 max-w-7xl mx-auto">
-        <div className="grid gap-12 lg:grid-cols-[1fr_380px] items-center">
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-blue-600 font-semibold mb-4">
-              Why work with us
+      <section id="listings" className="py-20 px-4 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-sm uppercase tracking-[0.35em] text-sky-600 font-semibold mb-3">
+              Featured homes
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Strategic websites built to attract, engage, and convert.
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-950">
+              Browse curated properties in top markets.
             </h2>
-            <p className="text-gray-600 max-w-2xl leading-7 mb-8">
-              Your web presence should do more than look good. It should clearly
-              communicate your offers, build trust, and guide people to take the
-              next step.
+            <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+              Modern homes for families, investors, and buyers who want a
+              seamless experience from search to close.
             </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {benefits.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-3xl bg-white p-6 shadow-sm border border-gray-200"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600">{item.desc}</p>
-                </div>
-              ))}
-            </div>
           </div>
-          <div className="rounded-3xl bg-blue-600 text-white p-8 shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">
-              Fast, profitable outcomes
-            </h3>
-            <p className="text-gray-100 leading-7 mb-6">
-              Work with a team focused on clarity, speed, and measurable
-              results. Every page is optimized for your ideal audience and your
-              next sale.
-            </p>
-            <ul className="space-y-3 text-gray-100">
-              <li className="flex gap-3">
-                <span className="text-blue-200">•</span>
-                <span>Conversion-focused copy and layout</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-blue-200">•</span>
-                <span>Mobile-first performance and speed</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-blue-200">•</span>
-                <span>Secure build process and easy handoff</span>
-              </li>
-            </ul>
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            {featuredHomes.map((home) => (
+              <article
+                key={home.name}
+                className="rounded-4xl overflow-hidden bg-white shadow-lg border border-slate-200"
+              >
+                <div className="h-52 bg-slate-200" aria-hidden="true" />
+                <div className="p-8">
+                  <p className="text-sm text-slate-500 uppercase tracking-[0.35em] mb-3">
+                    {home.location}
+                  </p>
+                  <h3 className="text-2xl font-semibold text-slate-950 mb-3">
+                    {home.name}
+                  </h3>
+                  <p className="text-lg font-bold text-slate-900 mb-4">
+                    {home.price}
+                  </p>
+                  <p className="text-slate-600 mb-4">{home.details}</p>
+                  <p className="text-slate-500 leading-7">{home.highlight}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="services" className="py-20 px-4 bg-white">
+      <section id="process" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-[0.3em] text-blue-600 font-semibold mb-3">
-              Services
+            <p className="text-sm uppercase tracking-[0.35em] text-sky-600 font-semibold mb-3">
+              Our process
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              Services that move prospects closer to purchase.
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-950">
+              A clear path from search to settlement.
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {services.map((service) => (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step, index) => (
               <div
-                key={service.title}
-                className="rounded-3xl border border-gray-200 bg-gray-50 p-8 shadow-sm hover:shadow-md transition"
+                key={step.title}
+                className="rounded-4xl border border-slate-200 bg-white p-8 shadow-sm"
               >
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {service.title}
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-600 text-white text-lg font-bold mb-5">
+                  {index + 1}
+                </div>
+                <h3 className="text-xl font-semibold text-slate-950 mb-3">
+                  {step.title}
                 </h3>
-                <p className="text-gray-600 leading-7">{service.desc}</p>
+                <p className="text-slate-600 leading-7">{step.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="testimonials" className="py-20 px-4 max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-sm uppercase tracking-[0.3em] text-blue-600 font-semibold mb-3">
-            Testimonials
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-            Clients love the results.
-          </h2>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((item) => (
-            <div
-              key={item.name}
-              className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm"
-            >
-              <p className="text-gray-600 leading-7 mb-6">“{item.quote}”</p>
-              <div>
-                <p className="font-semibold text-gray-900">{item.name}</p>
-                <p className="text-sm text-gray-500">{item.role}</p>
+      <section id="agents" className="py-20 px-4 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-sm uppercase tracking-[0.35em] text-sky-600 font-semibold mb-3">
+              Meet our team
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-950">
+              Experienced agents who know the market.
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {agents.map((agent) => (
+              <div
+                key={agent.name}
+                className="rounded-4xl bg-white p-8 shadow-lg border border-slate-200"
+              >
+                <div className="h-24 w-24 rounded-full bg-slate-100 mb-6 flex items-center justify-center text-2xl font-semibold text-slate-600">
+                  {agent.name
+                    .split(" ")
+                    .map((part) => part[0])
+                    .join("")}
+                </div>
+                <h3 className="text-xl font-semibold text-slate-950 mb-2">
+                  {agent.name}
+                </h3>
+                <p className="text-slate-500 mb-4">{agent.role}</p>
+                <p className="text-slate-600 leading-7">{agent.specialties}</p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      <section
-        id="pricing"
-        className="py-20 px-4 bg-linear-to-b from-gray-50 to-white"
-      >
-        <div className="max-w-7xl mx-auto text-center mb-12">
-          <p className="text-sm uppercase tracking-[0.3em] text-blue-600 font-semibold mb-3">
-            Packages
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-            Choose the right option for your business.
-          </h2>
-        </div>
-        <div className="grid gap-6 lg:grid-cols-3">
-          {plans.map((plan) => (
-            <div
-              key={plan.title}
-              className={`rounded-3xl p-8 shadow-sm border ${plan.accent ? "border-blue-600 bg-blue-600 text-white" : "border-gray-200 bg-white text-gray-900"}`}
-            >
-              <p className="text-sm uppercase tracking-[0.3em] font-semibold mb-4">
-                {plan.title}
-              </p>
-              <p className="text-4xl font-bold mb-6">{plan.price}</p>
-              <ul
-                className={`space-y-3 mb-8 text-sm leading-6 ${plan.accent ? "text-blue-100" : "text-gray-600"}`}
+      <section id="testimonials" className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-sm uppercase tracking-[0.35em] text-sky-600 font-semibold mb-3">
+              Success stories
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-950">
+              What our clients say.
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {testimonials.map((item) => (
+              <div
+                key={item.name}
+                className="rounded-4xl border border-slate-200 bg-white p-8 shadow-sm"
               >
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3">
-                    <span
-                      className={`text-xl ${plan.accent ? "text-blue-200" : "text-blue-600"}`}
-                    >
-                      ✓
-                    </span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button
-                type="button"
-                className={`w-full rounded-full px-6 py-3 font-semibold transition ${plan.accent ? "bg-white text-blue-600 hover:bg-blue-50" : "bg-blue-600 text-white hover:bg-blue-700"}`}
-              >
-                Select {plan.title}
-              </button>
-            </div>
-          ))}
+                <p className="text-slate-600 leading-7 mb-6">“{item.quote}”</p>
+                <p className="font-semibold text-slate-950">{item.name}</p>
+                <p className="text-sm text-slate-500">{item.role}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-4 bg-blue-600 text-white">
+      <section id="contact" className="py-20 px-4 bg-slate-900 text-white">
         <div className="max-w-4xl mx-auto text-center mb-10">
-          <p className="text-sm uppercase tracking-[0.3em] text-blue-200 font-semibold mb-3">
-            Start your project
+          <p className="text-sm uppercase tracking-[0.35em] text-sky-400 font-semibold mb-3">
+            Talk to an agent
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold">
-            Let’s build a high-converting website together.
+            Get a personal real estate plan.
           </h2>
-          <p className="mt-4 text-blue-100 max-w-2xl mx-auto leading-7">
-            Share your goals and I’ll send a tailored plan, timeline, and
-            pricing for the best path forward.
+          <p className="mt-4 text-slate-300 max-w-2xl mx-auto leading-7">
+            Share your timeline, location, and home goals so we can match you
+            with the perfect property or buyer strategy.
           </p>
         </div>
-        <div className="rounded-3xl bg-white p-8 shadow-2xl text-gray-900">
+        <div className="rounded-4xl bg-white p-8 shadow-2xl text-slate-900">
           <form
             ref={formRef}
             onSubmit={sendEmail}
@@ -428,31 +426,37 @@ const SalesPage = () => {
               name="user_name"
               placeholder="Your Name"
               required
-              className="col-span-2 w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="col-span-2 w-full rounded-3xl border border-slate-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-sky-300"
             />
             <input
               type="email"
               name="sender_email"
               placeholder="Your Email"
               required
-              className="col-span-2 w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="col-span-2 w-full rounded-3xl border border-slate-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-sky-300"
+            />
+            <input
+              type="text"
+              name="property_type"
+              placeholder="Buying, selling, or investing?"
+              className="col-span-2 w-full rounded-3xl border border-slate-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-sky-300"
             />
             <textarea
-              name="leavemessage"
+              name="message"
               rows="4"
-              placeholder="Project details or goals"
+              placeholder="Tell us what kind of property you want or your selling timeline"
               required
-              className="col-span-2 w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="col-span-2 w-full rounded-3xl border border-slate-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-sky-300"
             />
             <button
               type="submit"
               disabled={isSubmitting}
-              className="col-span-2 inline-flex justify-center items-center rounded-full bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/20 hover:bg-blue-700 transition disabled:cursor-not-allowed disabled:opacity-60"
+              className="col-span-2 inline-flex justify-center items-center rounded-full bg-slate-900 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-slate-900/20 hover:bg-slate-800 transition disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {isSubmitting ? "Sending..." : "Request a Free Strategy Call"}
+              {isSubmitting ? "Sending..." : "Request a Free Consultation"}
             </button>
             {formStatus && (
-              <p className="col-span-2 text-center text-sm text-gray-600 mt-2">
+              <p className="col-span-2 text-center text-sm text-slate-600 mt-2">
                 {formStatus}
               </p>
             )}
@@ -460,8 +464,8 @@ const SalesPage = () => {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-gray-400 py-8 text-center">
-        <p>© 2026 KelechiHQ. All rights reserved.</p>
+      <footer className="bg-slate-950 text-slate-400 py-8 text-center">
+        <p>© 2026 EstateVista. All rights reserved.</p>
       </footer>
     </div>
   );
